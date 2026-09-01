@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #f6f5f2;
+  --ink: #1a1a1a;
+  --mute: #6b6b6b;
+  --line: #e2dfd8;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #1a1a1a;
+  color: #f6f5f2;
+}
+
+/* Quiet focus — visible, not flashy */
+:focus-visible {
+  outline: 1px solid #1a1a1a;
+  outline-offset: 3px;
+}
+
+.kicker {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6b6b6b;
+}
+
+.rule {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+}
