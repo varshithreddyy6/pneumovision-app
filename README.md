@@ -1,6 +1,3 @@
-Here is the cleaned, **VS Code/GitHub-ready `README.md`**. I fixed the malformed Markdown/code fences and tables while preserving the information from your original file. 
-
-````markdown
 # PneumoVision
 
 **Educational / research screening prototype** for binary pneumonia detection from chest X-rays.
@@ -13,7 +10,7 @@ PneumoVision is a full-stack workstation where a **React** UI communicates with 
 
 The browser never imports PyTorch. Model probability is a network score, not clinical certainty.
 
-**Author:** [**Varshith Reddy**](https://linkedin.com/in/varshithreddyvangeti) · **+91 93930 81415** · [**varshithreddyy6@gmail.com**](mailto:varshithreddyy6@gmail.com) · [**GitHub**](https://github.com/varshithreddyy6)
+**Author:** [Varshith Reddy](https://linkedin.com/in/varshithreddyvangeti) · [Email](mailto:varshithreddyy6@gmail.com) · [GitHub](https://github.com/varshithreddyy6)
 
 ---
 
@@ -21,20 +18,21 @@ The browser never imports PyTorch. Model probability is a network score, not cli
 
 The system accepts a frontal chest radiograph in JPEG or PNG format and returns:
 
-- Predicted class: **`NORMAL`** or **`PNEUMONIA`**
-- Model probabilities:
-  - `P(pneumonia)`
-  - `P(normal)`
-- An uncertainty flag when the score is near the decision threshold
-- Grad-CAM heatmap and overlay
-- A persistent medical disclaimer
+* Predicted class: **`NORMAL`** or **`PNEUMONIA`**
+* Model probabilities:
+
+  * `P(pneumonia)`
+  * `P(normal)`
+* An uncertainty flag when the score is near the decision threshold
+* Grad-CAM heatmap and overlay
+* A persistent medical disclaimer
 
 It is intended for **learning, portfolio demonstration, and research plumbing**, including:
 
-- Dataset validation patterns
-- A typed API
-- A calm clinical UI
-- An honest empty metrics page until a real evaluation exists
+* Dataset validation patterns
+* A typed API
+* A calm clinical UI
+* An honest empty metrics page until a real evaluation exists
 
 A bundled **`train_demo.py`** can train a **synthetic DenseNet121 checkpoint** so the UI can run without downloading the multi-gigabyte Kermany / Guangzhou collection.
 
@@ -44,39 +42,39 @@ These weights demonstrate the pipeline only. They are **not a clinical model**.
 
 ## Features
 
-| Feature | Behaviour |
-|---|---|
-| Analyze workstation | Upload JPEG/PNG, hero X-ray viewer, analysis rail |
+| Feature               | Behaviour                                                                     |
+| --------------------- | ----------------------------------------------------------------------------- |
+| Analyze workstation   | Upload JPEG/PNG, hero X-ray viewer, analysis rail                             |
 | DenseNet121 inference | ImageNet backbone, binary head, checkpoint at `artifacts/checkpoints/best.pt` |
-| Uncertainty band | If `\|p - 0.5\| < 0.10` → human review recommended |
-| Grad-CAM | Heatmap + overlay; if Grad-CAM fails, scores still return |
-| Health | `GET /health` reports `model_loaded` |
-| Performance page | Empty until real evaluation JSON exists; metrics are never fabricated |
-| Explain page | Grad-CAM method and caveats |
-| About | Dataset limits, bias, disclaimer, developer contact |
-| Tests | pytest for API contract and Vitest for client helper |
+| Uncertainty band      | If `\|p - 0.5\| < 0.10` → human review recommended                            |
+| Grad-CAM              | Heatmap + overlay; if Grad-CAM fails, scores still return                     |
+| Health                | `GET /health` reports `model_loaded`                                          |
+| Performance page      | Empty until real evaluation JSON exists; metrics are never fabricated         |
+| Explain page          | Grad-CAM method and caveats                                                   |
+| About                 | Dataset limits, bias, disclaimer, developer contact                           |
+| Tests                 | pytest for API contract and Vitest for client helper                          |
 
 ### Not Included
 
 The project does **not** claim to provide:
 
-- Regulatory clearance
-- DICOM/PACS integration
-- Verified hospital patient IDs
-- Kermany-trained production metrics
-- Use as a diagnostic device
+* Regulatory clearance
+* DICOM/PACS integration
+* Verified hospital patient IDs
+* Kermany-trained production metrics
+* Use as a diagnostic device
 
 ---
 
 ## Technologies
 
-| Layer | Stack |
-|---|---|
+| Layer    | Stack                                                  |
+| -------- | ------------------------------------------------------ |
 | Frontend | Vite, React 18, TypeScript, Tailwind CSS, React Router |
-| Backend | FastAPI, Uvicorn, Pydantic Settings |
-| ML | PyTorch, torchvision DenseNet121, Pillow |
-| Tests | pytest, Vitest |
-| UI | Paper `#F6F5F2`, ink `#1A1A1A`, Newsreader + Inter |
+| Backend  | FastAPI, Uvicorn, Pydantic Settings                    |
+| ML       | PyTorch, torchvision DenseNet121, Pillow               |
+| Tests    | pytest, Vitest                                         |
+| UI       | Paper `#F6F5F2`, ink `#1A1A1A`, Newsreader + Inter     |
 
 Vite proxies **`/health`** and **`/v1`** to **`127.0.0.1:8000`**, so the browser does not call localhost across origins.
 
@@ -86,15 +84,17 @@ Vite proxies **`/health`** and **`/v1`** to **`127.0.0.1:8000`**, so the browser
 
 Before running the project, install:
 
-- **Python 3.11+**
-  - Python 3.12 has been tested.
-  - On Windows, install from [python.org](https://www.python.org/downloads/).
-  - Enable **Add python.exe to PATH** during installation.
-  - Turn off Microsoft Store `python.exe` aliases.
-- **Node.js 18+**
-  - Node.js 20 is recommended.
-- **Git**
-- Approximately **2 GB of disk space** for PyTorch and ImageNet weights during the first training run.
+* **Python 3.11+**
+
+  * Python 3.12 has been tested.
+  * On Windows, install from [python.org](https://www.python.org/downloads/).
+  * Enable **Add python.exe to PATH** during installation.
+  * Turn off Microsoft Store `python.exe` aliases.
+* **Node.js 18+**
+
+  * Node.js 20 is recommended.
+* **Git**
+* Approximately **2 GB of disk space** for PyTorch and ImageNet weights during the first training run.
 
 ---
 
@@ -111,7 +111,7 @@ The API must be running before using the Analyze page.
 ```bash
 git clone https://github.com/varshithreddyy6/pneumovision-app.git
 cd pneumovision-app
-````
+```
 
 ---
 
@@ -167,6 +167,7 @@ python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 
 ```bash
 cd pneumovision-app/services/api
+
 python3 -m venv .venv
 source .venv/bin/activate
 
@@ -264,7 +265,7 @@ because the model is not loaded. This is expected.
 
 Open **Terminal 2**.
 
-Navigate to the frontend:
+Navigate to the frontend.
 
 ### Windows
 
@@ -532,6 +533,8 @@ Do **not** commit:
 node_modules/
 .env
 *.pt
+*.pth
+*.onnx
 ```
 
 These files are gitignored.
@@ -575,7 +578,7 @@ Initialize the repository:
 ```bash
 git init
 git add .
-git commit -m "PneumoVision: FastAPI + React pneumonia screening prototype"
+git commit -m "Initial commit - PneumoVision"
 ```
 
 Connect the GitHub repository:
@@ -626,7 +629,7 @@ Issues and pull requests are welcome for the **software side** of the project, i
 
 Do **not** submit claims of clinical accuracy.
 
-Keep the medical disclaimer visible.
+Keep the disclaimer visible.
 
 Do not fabricate metrics.
 
@@ -642,7 +645,7 @@ python -m pytest -q
 Frontend:
 
 ```bash
-cd ../../apps/web
+cd apps/web
 npm test
 npm run build
 ```
@@ -656,6 +659,3 @@ PneumoVision is provided strictly as an **educational and research software prot
 It is not intended to diagnose, treat, prevent, or make clinical decisions regarding pneumonia or any other medical condition.
 
 Any model output must be interpreted by a qualified healthcare professional.
-
-```
-```
